@@ -13,9 +13,16 @@ app.use(cookieParser());
 
 // CORS for frontend dev
 app.use(cors({
-  origin: ['http://localhost:3000','http://localhost:5173'],
-  credentials: true
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://crud-frontend-n8qn.onrender.com' // <== add this
+  ],
+  credentials: true,
+  methods: ['GET','POST','PUT','DELETE','PATCH','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization']
 }));
+
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/tasks', taskRoutes);
